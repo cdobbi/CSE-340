@@ -1,13 +1,14 @@
-<h1>Welcome to the Cars Website!</h1>
-<p>Check out our cars below.</p>
+<h1>Welcome Cars Collective!</h1>
+<p>Check out what we have in store for you below.</p>
 
 <section class="car-list">
-    <article class="car">
-        <h2>Toyota Camry</h2>
-        <p>Reliable and efficient Sedan.</p>
-    </article>
-    <article>
-        <h2>For Mustand</h2>
-        <p>Classic American car.</p>
-    </article>
+    <% cars.forEach(car => { %>
+        <article class="car">
+            <h2><%= car.name %></h2>
+            <% if (car.iage) { %>
+                <img src="/public/images/<%= car.image  %>" alt="<%= car.name %>"
+            <% } %>
+            <p><%= car.description %></p>
+        </article>
+    <% }) %>
 </section>

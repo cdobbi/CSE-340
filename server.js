@@ -21,7 +21,10 @@ app.set("layout", "./layouts/layout") // not at views root
 /* ***********************
  * Routes
  *************************/
-app.use(static)
+app.use(static);
+
+const indexRouter = require("./routes/index");
+app.use("/", indexRouter);
 
 /* ***********************
  * Local Server Information
