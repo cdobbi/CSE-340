@@ -1,14 +1,2 @@
-<h1>Welcome Cars Collective!</h1>
+<h1>Welcome to CSE Motors!</h1>
 <p>Check out what we have in store for you below.</p>
-
-<section class="car-list">
-    <% cars.forEach(car => { %>
-        <article class="car">
-            <h2><%= car.name %></h2>
-            <% if (car.iage) { %>
-                <img src="/public/images/<%= car.image  %>" alt="<%= car.name %>"
-            <% } %>
-            <p><%= car.description %></p>
-        </article>
-    <% }) %>
-</section>
