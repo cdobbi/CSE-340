@@ -16,3 +16,5 @@ node_modules
 **/.DS_Store
 READ.me
 pnpm-lock.yaml
+
+README.md
