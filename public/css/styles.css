@@ -1,11 +1,105 @@
-/******* Change Box Model ***************/
+/*Change Box Model*/
 *,
 *:before,
 *:after {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
+/* Base Mobile First */
 body {
-    min-height: 100vh;
+    background-image: url("/images/site/small_check.jpg:");
+    background-repeat: repeat;
     margin: 0;
+    padding: 0;
+    font-family: "Trebucket MS", Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
+    min-height: 100vh;
+    color: #1a1a1a;    
+}
+
+#wrapper {
+    background-color: #fff;
+    margin: 0 auto;
+    max-width: 960px;
+    min-height: 100vh;
+}
+
+/* Header **/
+#top-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem;
+}
+
+#top-header .siteName a {
+    color: #1a1a1a;
+    text-decoration: none;
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+#top-header #tools a {
+    color: #1a1a1a;
+    text-decoration: none;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Navigation */
+nav {
+    background-color: #1a2b4a;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    justify-content: space-around;
+}
+
+nav ul li a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    padding: 0.6rem 1rem;
+    font-size: 0.95rem;
+}
+/* Main Content */
+main {
+    padding: 1rem;
+}
+
+main h1 {
+    font-size: 1.6rem;
+    margin: 0 0 0.75rem 0;
+    font-weight: bold;
+}
+
+/* Hero Section */
+#hero {
+    position: relative;
+    margin: 0.75 rem 0;
+}
+
+.hero > img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.hero .hero-text h2 {
+    margin: 0 0 0.25rem 0;
+    font-size: 1.2rem;
+    color: #0ad;
+    font-weight: bold;
+}
+
+.hero .hero-text p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #1a1a1a;
 }
