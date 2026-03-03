@@ -169,9 +169,9 @@ main h1 {
     text-decoration: none;
     color: #0077aa;
     padding: 0.75rem;
-    border: 1px solid #ccc;
+    border: 1px solid #1b386e;
     border-radius: 8px;
-    background-color: #e8f4f8;
+    background-color: #ffed9e;
     transition: background-color 0.3s ease;
 }
 
