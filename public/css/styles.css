@@ -80,7 +80,7 @@ main h1 {
 }
 
 /* Hero Section */
-#hero {
+.hero {
     position: relative;
     margin: 0.75 rem 0;
 }
@@ -91,6 +91,13 @@ main h1 {
     display: block;
 }
 
+.her .hero-text {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    padding: 0;
+}
+
 .hero .hero-text h2 {
     margin: 0 0 0.25rem 0;
     font-size: 1.2rem;
@@ -98,8 +105,145 @@ main h1 {
     font-weight: bold;
 }
 
-.hero .hero-text p {
+.hero .hero-text ul {
+    list-style: none;
     margin: 0;
-    font-size: 0.95rem;
-    color: #1a1a1a;
+    margin: 0 0 0.5rem 0;
+}
+
+.hero .hero-text ul li {
+    color: #0ad;
+    font-size: 0.9rem;
+    font-weight: bold;
+    line-height: 1.4;
+}
+
+.hero .hero-text a img {
+    height: 30px;
+    width: auto;
+}
+
+/* Reviews */
+.reviews {
+    margin-top: 1.5rem;
+}
+
+.reviews h2 {
+    font-size: 1.3rem;
+    margin: 0.75rem;
+    font-weight: bold;
+}
+
+.reviews ul {
+    list-style: disc;
+    padding-left: 1.25rem;
+    margin: 0;
+}
+
+.reviews ul li {
+    margin-top: 1.5rem;
+}
+
+/* Upgrades */
+.upgrades {
+    margin-top: 1.5rem;
+}
+.upgrades h2 {
+    font-size: 1.3rem;
+    margin: 0.75rem;
+    font-weight: bold;
+}
+
+.upgrade-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+}
+
+.upgrade-grid a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: #0077aa;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #e8f4f8;
+    transition: background-color 0.3s ease;
+}
+
+.upgrade-grid img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    margin-bottom: 0.4em;
+}
+
+.upgrade-grid p {
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+/* Footer */
+footer {
+    background-color: #1a1a1a;
+    color: #fff;
+    padding: 0.75rem;
+    margin-top: 1.5rem;
+    text-align: center;
+}
+
+footer .copyright {
+    margin: 0;
+    font-size: 0.85rem;
+}
+
+/* Larer Screens */
+@media (min-width: 768px) {
+    main {
+        padding: 1.5rem, 2rem;
+    }
+
+    main h1 {
+        font-size: 2rem;
+    }
+
+    .hero .hero-text {
+        top: 1rem;
+        right: 1rem;
+        left: auto;
+        background-color: rgba(255, 255, 255, 0.85);
+        padding: 1rem 1.5rem;
+        border-radius: 8px;
+    }
+
+    .hero .hero-text h2 {
+        font-size: 1.4rem;
+    }
+
+    .hero .hero-text ul li {
+        font-size: 1rem;
+    }
+
+    .reviews-upgrades {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        align-items: start;
+    }
+
+    .upgrades {
+        order: 1;
+    }
+
+    .reviews {
+        order: 2;
+    }   
+
+    .upgrade-grid img {
+        width: 100px;
+        height: 100px;
+    }
 }
