@@ -7,15 +7,15 @@
 
 /* Base Mobile First */
 body {
-    background-image: url("/images/site/small_check.jpg:");
+    background-image: url("/images/site/small_check.jpg");
     background-repeat: repeat;
     margin: 0;
     padding: 0;
-    font-family: "Trebucket MS", Arial, Helvetica, sans-serif;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     font-size: 1rem;
     line-height: 1.5;
     min-height: 100vh;
-    color: #1a1a1a;    
+    color: #1a1a1a;
 }
 
 #wrapper {
@@ -68,6 +68,7 @@ nav ul li a {
     padding: 0.6rem 1rem;
     font-size: 0.95rem;
 }
+
 /* Main Content */
 main {
     padding: 1rem;
@@ -82,16 +83,16 @@ main h1 {
 /* Hero Section */
 .hero {
     position: relative;
-    margin: 0.75 rem 0;
+    margin: 0.75rem 0;
 }
 
-.hero > img {
+.hero>img {
     width: 100%;
     height: auto;
     display: block;
 }
 
-.her .hero-text {
+.hero .hero-text {
     position: absolute;
     top: 0.5rem;
     left: 0.5rem;
@@ -107,7 +108,7 @@ main h1 {
 
 .hero .hero-text ul {
     list-style: none;
-    margin: 0;
+    padding: 0;
     margin: 0 0 0.5rem 0;
 }
 
@@ -130,7 +131,7 @@ main h1 {
 
 .reviews h2 {
     font-size: 1.3rem;
-    margin: 0.75rem;
+    margin-bottom: 0.75rem;
     font-weight: bold;
 }
 
@@ -141,16 +142,17 @@ main h1 {
 }
 
 .reviews ul li {
-    margin-top: 1.5rem;
+    padding: 0.35rem 0;
 }
 
 /* Upgrades */
 .upgrades {
     margin-top: 1.5rem;
 }
+
 .upgrades h2 {
     font-size: 1.3rem;
-    margin: 0.75rem;
+    margin-bottom: 0.75rem;
     font-weight: bold;
 }
 
@@ -203,7 +205,7 @@ footer .copyright {
 /* Larer Screens */
 @media (min-width: 768px) {
     main {
-        padding: 1.5rem, 2rem;
+        padding: 1.5rem 2rem;
     }
 
     main h1 {
@@ -240,7 +242,7 @@ footer .copyright {
 
     .reviews {
         order: 2;
-    }   
+    }
 
     .upgrade-grid img {
         width: 100px;
