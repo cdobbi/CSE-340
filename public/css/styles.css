@@ -10,7 +10,7 @@ body {
     background-image: url("/images/site/small_check.jpg");
     background-repeat: repeat;
     margin: 0;
-    padding: 0;
+    padding: 2rem;
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     font-size: 1rem;
     line-height: 1.5;
@@ -214,11 +214,7 @@ footer .copyright {
 
     .hero .hero-text {
         top: 1rem;
-        right: 1rem;
-        left: auto;
-        background-color: rgba(255, 255, 255, 0.85);
-        padding: 1rem 1.5rem;
-        border-radius: 8px;
+        left: 0.75rem;
     }
 
     .hero .hero-text h2 {
