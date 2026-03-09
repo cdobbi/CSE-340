@@ -1,17 +1,17 @@
 {
     "sqltools.connections": [
         {
+            "previewLimit": 50,
+            "server": "dpg-d6necbnafjfc739n31q0-a.oregon-postgres.render.com",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "render.com",
+            "connectString": "postgresql://cse340_db_0yip_user:rYmV3I7Gfn85EzReQw9zrTiaiY1JY5Rz@dpg-d6necbnafjfc739n31q0-a.oregon-postgres.render.com/cse340_db_0yip",
             "pgOptions": {
                 "ssl": {
                     "rejectUnauthorized": true
                 }
-            },
-            "ssh": "Disabled",
-            "previewLimit": 50,
-            "server": "dpg-d6necbnafjfc739n31q0-a.oregon-postgres.render.com",
-            "driver": "PostgreSQL",
-            "name": "CSE340",
-            "connectString": "postgresql://cse340_db_0yip_user:rYmV3I7Gfn85EzReQw9zrTiaiY1JY5Rz@dpg-d6necbnafjfc739n31q0-a.oregon-postgres.render.com/cse340_db_0yip"
+            }
         }
     ]
 }
