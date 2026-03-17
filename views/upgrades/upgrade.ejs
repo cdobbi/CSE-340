@@ -1,0 +1,27 @@
+<% if (upgrade) { %>
+    <div class="upgrade-wrapper">
+        <h1>
+            <%= upgrade.title %>
+        </h1>
+
+        <div class="upgrade-content">
+            <div class="upgrade-image">
+                <img src="/images/upgrades/<%= upgrade.image %>" alt="<%= upgrade.title %>">
+            </div>
+
+            <div class="upgrade-info">
+                <p>
+                    <%= upgrade.description %>
+                </p>
+
+                <div class="upgrade-action">
+                    <button onclick="alert('Add to cart functionality coming soon!')">Add to Cart</button>
+                </div>
+
+                <p><a href="/">← Back to Home</a></p>
+            </div>
+        </div>
+    </div>
+    <% } else { %>
+        <p>Upgrade not found</p>
+        <% } %>

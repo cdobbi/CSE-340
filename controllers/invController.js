@@ -19,6 +19,25 @@ invCont.buildByClassificationId = async function (req, res, next) {
     })
 }
 
+/* ***************************
+ *  Build inventory detail page
+ * ************************** */
+invCont.buildDetail = async function (req, res, next) {
+    const inv_id = req.params.invId
+    const data = await invModel.getInventoryById(inv_id)
+    let nav = await utilities.getNav()
+    if (data.length > 0) {
+        const vehicle = data[0]
+        res.render("./inventory/detail", {
+            title: vehicle.inv_make + " " + vehicle.inv_model,
+            nav,
+            vehicle,
+        })
+    } else {
+        res.status(404).render("error", { message: "Vehicle not found", nav })
+    }
+}
+
 // req is the request object, which the client sends to the server. params is an Express function, used to represent data that is passed in the URL from the client to the server. classificationId is the name that was given to the classification_id value in the inventoryRoute.js file (see line 7 of that file).
 
 module.exports = invCont

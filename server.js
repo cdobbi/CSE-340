@@ -13,6 +13,7 @@ const app = express()
 const static = require("./routes/static")
 const baseController = require("./controllers/baseController")
 const inventoryRoute = require("./routes/inventoryRoute")
+const upgradesRoute = require("./routes/upgradesRoute")
 
 /* ***********************
  * View Engine and Templates
@@ -34,6 +35,10 @@ app.get("/", function (req, res) {
 
 // Inventory route
 app.use("/inv", inventoryRoute)
+
+// Upgrades route
+app.use("/upgrades", upgradesRoute)
+
 // Express function. Keyword. Variable. Required file
 
 /* ***********************

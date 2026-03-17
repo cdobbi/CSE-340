@@ -32,7 +32,7 @@ module.exports = Util
 * Build the classification view HTML
 * ************************************ */
 Util.buildClassificationGrid = async function (data) {
-    let grid
+    let grid = ''
     if (data.length > 0) {
         grid = '<ul id="inv-display">'
         data.forEach(vehicle => {

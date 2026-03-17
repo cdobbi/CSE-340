@@ -1,0 +1,57 @@
+<% if (vehicle) { %>
+    <div class="detail-wrapper">
+        <h1>
+            <%= vehicle.inv_make %>
+                <%= vehicle.inv_model %>
+        </h1>
+
+        <div class="detail-content">
+            <div class="detail-image">
+                <% let imagePath="/images/vehicles/no-image.png" if (vehicle.inv_image) { const
+                    rawImage=vehicle.inv_image.trim().replace(/\\/g, "/" ) const imageFile=rawImage.split("/").pop() if (imageFile) {
+                    imagePath="/images/vehicles/" + imageFile } } %>
+                    <img src="<%= imagePath %>" alt="<%= vehicle.inv_make %> <%= vehicle.inv_model %>">
+            </div>
+
+            <div class="detail-info">
+                <dl>
+                    <dt>Price:</dt>
+                    <dd>$<%= new Intl.NumberFormat('en-US').format(vehicle.inv_price) %>
+                    </dd>
+
+                    <dt>Make:</dt>
+                    <dd>
+                        <%= vehicle.inv_make %>
+                    </dd>
+
+                    <dt>Model:</dt>
+                    <dd>
+                        <%= vehicle.inv_model %>
+                    </dd>
+
+                    <dt>Year:</dt>
+                    <dd>
+                        <%= vehicle.inv_year %>
+                    </dd>
+
+                    <dt>Miles:</dt>
+                    <dd>
+                        <%= new Intl.NumberFormat('en-US').format(vehicle.inv_miles) %>
+                    </dd>
+
+                    <dt>Color:</dt>
+                    <dd>
+                        <%= vehicle.inv_color %>
+                    </dd>
+                </dl>
+
+                <h2>Description</h2>
+                <p>
+                    <%= vehicle.inv_description %>
+                </p>
+            </div>
+        </div>
+    </div>
+    <% } else { %>
+        <p>Vehicle not found</p>
+        <% } %>
