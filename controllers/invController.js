@@ -4,7 +4,7 @@ const utilities = require("../utilities")
 const invCont = {}
 
 /* ***************************
- *  Build inventory by classification view
+ *  Build inventory classification page
  * ************************** */
 invCont.buildByClassificationId = async function (req, res, next) {
     const classification_id = req.params.classificationId
