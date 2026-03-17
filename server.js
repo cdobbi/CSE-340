@@ -31,6 +31,10 @@ app.get("/", function (req, res) {
     res.render("index", { title: "Home" })
 });
 
+// Inventory route
+app.use("/inv", inventoryRoute)
+// Express function. Keyword. Variable. Required file
+
 /* ***********************
  * Local Server Information
  * Values from .env (environment) file

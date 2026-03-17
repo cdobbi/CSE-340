@@ -26,3 +26,4 @@ Util.getNav = async function (req, res, next) {
 }
 
 module.exports = Util
+

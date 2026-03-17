@@ -1,0 +1,24 @@
+const invModel = require("../models/inventory-model")
+const utilities = require("../utilities")
+
+const invCont = {}
+
+/* ***************************
+ *  Build inventory by classification view
+ * ************************** */
+invCont.buildByClassificationId = async function (req, res, next) {
+    const classification_id = req.params.classificationId
+    const data = await invModel.getInventoryByClassificationId(classification_id)
+    const grid = await utilities.buildClassificationGrid(data)
+    let nav = await utilities.getNav()
+    const className = data[0].classification_name
+    res.render("./inventory/classification", {
+        title: className + " vehicles",
+        nav,
+        grid,
+    })
+}
+
+// req is the request object, which the client sends to the server. params is an Express function, used to represent data that is passed in the URL from the client to the server. classificationId is the name that was given to the classification_id value in the inventoryRoute.js file (see line 7 of that file).
+
+module.exports = invCont
