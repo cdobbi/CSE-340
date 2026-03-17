@@ -1,0 +1,13 @@
+/* ********************************
+ *  Build inventory by classification view
+ * ****************************** */
+
+ <% if (title) { %>
+<h1><%= title %></h1>
+<% } else {
+  res.redirect('/')
+} %>
+
+<%# messages() %>
+
+<%- grid %>
