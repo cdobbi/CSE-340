@@ -36,9 +36,14 @@ Util.buildClassificationGrid = async function (data) {
     if (data.length > 0) {
         grid = '<ul id="inv-display">'
         data.forEach(vehicle => {
-            const thumbnailPath = vehicle.inv_thumbnail
-                ? vehicle.inv_thumbnail.replace("/images/", "/images/vehicles/")
-                : "/images/vehicles/no-image-tn.png"
+            let thumbnailPath = "/images/vehicles/no-image-tn.png"
+            if (vehicle.inv_thumbnail) {
+                if (vehicle.inv_thumbnail.startsWith("/images/vehicles/")) {
+                    thumbnailPath = vehicle.inv_thumbnail
+                } else {
+                    thumbnailPath = vehicle.inv_thumbnail.replace("/images/", "/images/vehicles/")
+                }
+            }
             grid += '<li>'
             grid += '<a href="../../inv/detail/' + vehicle.inv_id
                 + '" title="View ' + vehicle.inv_make + ' ' + vehicle.inv_model
