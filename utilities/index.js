@@ -38,11 +38,10 @@ Util.buildClassificationGrid = async function (data) {
         data.forEach(vehicle => {
             let thumbnailPath = "/images/vehicles/no-image-tn.png"
             if (vehicle.inv_thumbnail) {
-                const rawThumbnail = vehicle.inv_thumbnail.trim()
-                if (rawThumbnail.startsWith("/images/vehicles/")) {
-                    thumbnailPath = rawThumbnail
-                } else {
-                    thumbnailPath = rawThumbnail.replace(/^\/images\/(?!vehicles\/)/, "/images/vehicles/")
+                const rawThumbnail = vehicle.inv_thumbnail.trim().replace(/\\/g, "/")
+                const thumbnailFile = rawThumbnail.split("/").pop()
+                if (thumbnailFile) {
+                    thumbnailPath = "/images/vehicles/" + thumbnailFile
                 }
             }
             grid += '<li>'
