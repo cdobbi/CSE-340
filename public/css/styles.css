@@ -202,6 +202,60 @@ footer .copyright {
     font-size: 0.85rem;
 }
 
+/*Inventory Classification Display */
+#inv-display {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#inv-display li {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+    text-align: center;
+}
+
+#inv-display img {
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+}
+
+#inv-display a {
+    text-decoration: none;
+    color: #1b386e;
+}
+
+#inv-display a:hover {
+    text-decoration: underline;
+}
+.namePrice {
+    margin-top: .075rem;
+}
+
+.namePrice h2 {
+    margin: 0.5rem 0;
+    font-size: 1.2rem;
+}
+
+#namePrice span {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #000;
+}
+
+#notice {
+    padding: 1rem;
+    background-color: #fff3cd;
+    border: 1px solid #ffeeba;
+    border-radius: 8px;
+    color: #856404;
+}
+
 /* Larer Screens */
 @media (min-width: 768px) {
     main {
@@ -243,5 +297,11 @@ footer .copyright {
     .upgrade-grid img {
         width: 100px;
         height: 100px;
+    }
+
+    #inv-display {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
     }
 }
