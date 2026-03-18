@@ -25,16 +25,15 @@ invCont.buildByClassificationId = async function (req, res, next) {
 invCont.buildDetail = async function (req, res, next) {
     const inv_id = req.params.invId
     const data = await invModel.getInventoryById(inv_id)
-    let nav = await utilities.getNav()
     if (data.length > 0) {
-        const vehicle = data[0]
+        const detail = utilites.buildVehicleDetail(data[0])
         res.render("./inventory/detail", {
-            title: vehicle.inv_make + " " + vehicle.inv_model,
+            title: data[0].inv_make + " " + data[0].inv_model,
             nav,
-            vehicle,
+            detail,
         })
     } else {
-        res.status(404).render("error", { message: "Vehicle not found", nav })
+        res.status(404).render("error", { message: "vehicle not found", nav })
     }
 }
 
