@@ -1,0 +1,28 @@
+/* Mobile Hamburger Menu - max-width: 767px */
+.hamburger {
+    display: flex;
+}
+
+.nav-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #1b386e;
+    flex-direction: column;
+}
+
+.nav-menu.active {
+    display: flex;
+}
+
+nav ul {
+    flex-direction: column;
+    width: 100%;
+}
+
+nav ul li a {
+    padding: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}

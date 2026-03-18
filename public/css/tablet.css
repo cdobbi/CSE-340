@@ -1,0 +1,47 @@
+/* Larger Screens - min-width: 768px */
+main {
+    padding: 1.5rem 2rem;
+}
+
+main h1 {
+    font-size: 2rem;
+}
+
+.hero .hero-text {
+    top: 1rem;
+    left: 0.75rem;
+}
+
+.hero .hero-text h2 {
+    font-size: 1.4rem;
+}
+
+.hero .hero-text ul li {
+    font-size: 1rem;
+}
+
+.reviews-upgrades {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: start;
+}
+
+.upgrades {
+    order: 1;
+}
+
+.reviews {
+    order: 2;
+}
+
+.upgrade-grid img {
+    width: 100px;
+    height: 100px;
+}
+
+#inv-display {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
