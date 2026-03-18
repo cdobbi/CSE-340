@@ -1,57 +1,39 @@
 <% if (vehicle) { %>
-    <div class="detail-wrapper">
-        <h1>
-            <%= vehicle.inv_make %>
-                <%= vehicle.inv_model %>
-        </h1>
+    <h1>
+        <%= vehicle.inv_make %>
+            <%= vehicle.inv_model %>
+    </h1>
 
-        <div class="detail-content">
-            <div class="detail-image">
-                <% let imagePath="/images/vehicles/no-image.png" if (vehicle.inv_image) { const
-                    rawImage=vehicle.inv_image.trim().replace(/\\/g, "/" ) const imageFile=rawImage.split("/").pop() if (imageFile) {
-                    imagePath="/images/vehicles/" + imageFile } } %>
-                    <img src="<%= imagePath %>" alt="<%= vehicle.inv_make %> <%= vehicle.inv_model %>">
-            </div>
+    <img src="/images/vehicles/<%= vehicle.inv_image %>" alt="<%= vehicle.inv_make %> <%= vehicle.inv_model %>">
 
-            <div class="detail-info">
-                <dl>
-                    <dt>Price:</dt>
-                    <dd>$<%= new Intl.NumberFormat('en-US').format(vehicle.inv_price) %>
-                    </dd>
+    <p>
+        <strong>Price:</strong> $<%= new Intl.NumberFormat('en-US').format(vehicle.inv_price) %>
+    </p>
+    <p>
+        <strong>Make:</strong>
+        <%= vehicle.inv_make %>
+    </p>
+    <p>
+        <strong>Model:</strong>
+        <%= vehicle.inv_model %>
+    </p>
+    <p>
+        <strong>Year:</strong>
+        <%= vehicle.inv_year %>
+    </p>
+    <p>
+        <strong>Miles:</strong>
+        <%= new Intl.NumberFormat('en-US').format(vehicle.inv_miles) %>
+    </p>
+    <p>
+        <strong>Color:</strong>
+        <%= vehicle.inv_color %>
+    </p>
 
-                    <dt>Make:</dt>
-                    <dd>
-                        <%= vehicle.inv_make %>
-                    </dd>
-
-                    <dt>Model:</dt>
-                    <dd>
-                        <%= vehicle.inv_model %>
-                    </dd>
-
-                    <dt>Year:</dt>
-                    <dd>
-                        <%= vehicle.inv_year %>
-                    </dd>
-
-                    <dt>Miles:</dt>
-                    <dd>
-                        <%= new Intl.NumberFormat('en-US').format(vehicle.inv_miles) %>
-                    </dd>
-
-                    <dt>Color:</dt>
-                    <dd>
-                        <%= vehicle.inv_color %>
-                    </dd>
-                </dl>
-
-                <h2>Description</h2>
-                <p>
-                    <%= vehicle.inv_description %>
-                </p>
-            </div>
-        </div>
-    </div>
+    <h2>Description</h2>
+    <p>
+        <%= vehicle.inv_description %>
+    </p>
     <% } else { %>
         <p>Vehicle not found</p>
         <% } %>

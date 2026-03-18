@@ -2,8 +2,8 @@ const utilities = require("../utilities")
 
 const upgradesCont = {}
 
-// Upgrade names and titles mapping
-const upgradeDetails = {
+// Store upgrade info
+const upgrades = {
     "flux-cap": {
         title: "Flux Capacitor",
         description: "Travel through time at 88 miles per hour!",
@@ -26,12 +26,10 @@ const upgradeDetails = {
     }
 }
 
-/* ***************************
- *  Build upgrade page
- * ************************** */
+// Get upgrade page
 upgradesCont.buildUpgrade = async function (req, res, next) {
     const upgradeName = req.params.upgradeName
-    const upgrade = upgradeDetails[upgradeName]
+    const upgrade = upgrades[upgradeName]
     let nav = await utilities.getNav()
 
     if (upgrade) {
