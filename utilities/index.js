@@ -74,7 +74,7 @@ Util.buildClassificationGrid = async function (data) {
 * ************************************ */
 Util.buildVehicleDetail = function (vehicle) {
     let detail = '<div class="vehicle-detail">'
-    detail += '<div class="detail-image"?'
+    detail += '<div class="detail-image">'
     detail += '<img src="' + vehicle.inv_image
         + '" alt="' + vehicle.inv_make + ' ' + vehicle.inv_model + '">'
     detail += '</div>'
