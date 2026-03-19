@@ -279,3 +279,24 @@ footer .copyright {
     border-radius: 8px;
     color: #856404;
 }
+
+/* Vehicle Detail Page */
+.vehicle-detail {
+    display: flex;
+    flex-direction: column;
+}
+
+.vehicle-detail .detail-image img {
+    width: 100%;
+    height: auto;
+}
+
+.vehicle-detail .detail-info {
+    padding: 0.5rem 0;
+}
+
+.detail-price {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #333;
+}
