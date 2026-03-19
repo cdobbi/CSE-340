@@ -25,9 +25,6 @@ Util.getNav = async function (req, res, next) {
     return list
 }
 
-module.exports = Util
-
-
 /* **************************************
 * Build the classification view HTML
 * ************************************ */
@@ -90,6 +87,13 @@ Util.buildVehicleDetail = function (vehicle) {
     return detail
 }
 
+/* **************************************
+* Middleware for handling 404 errors
+* ************************************ */
+Util.handleErrors = function (fn) {
+    return function (req, res, next) {
+        fn(req, res, next).catch(next)
+    }
+}
 
-
-
+module.exports = Util
