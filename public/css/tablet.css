@@ -45,3 +45,16 @@ main h1 {
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
 }
+
+.vehicle-detail {
+    flex-direction: row;
+    gap: 2rem;
+}
+
+.vehicle-detail .detail-image {
+    width: 50%;
+}
+
+.vehicle-detail .detail-image {
+    width: 50%;
+}
