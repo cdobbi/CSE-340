@@ -272,7 +272,7 @@ footer .copyright {
     color: #000;
 }
 
-#notice {
+.notice {
     padding: 1rem;
     background-color: #fff3cd;
     border: 1px solid #ffeeba;
