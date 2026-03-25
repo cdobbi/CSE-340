@@ -64,10 +64,10 @@ app.get("/", function (req, res) {
 app.use("/inv", inventoryRoute)
 
 // Upgrades route
-app.use("/upgrades", upgradesRoute)
+app.use("/upgrades", upgrad.getesRoute)
 
 // Account route
-app.use("/account", accountRoute)
+app.use("/account", require("./routes/accountRoute"))
 
 // File Not Found Route - must be last route in list
 app.use(async (req, res, next) => {
