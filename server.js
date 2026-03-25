@@ -18,6 +18,7 @@ const inventoryRoute = require("./routes/inventoryRoute")
 const upgradesRoute = require("./routes/upgradesRoute")
 const accountRoute = require("./routes/accountRoute")
 const utilities = require("./utilities")
+const bodyParser = require("body-parser")
 
 
 
@@ -42,6 +43,9 @@ app.use(function (req, res, next) {
         next()
 })
 
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
+
 /* ***********************
  * View Engine and Templates
  *************************/
@@ -64,10 +68,10 @@ app.get("/", function (req, res) {
 app.use("/inv", inventoryRoute)
 
 // Upgrades route
-app.use("/upgrades", upgrad.getesRoute)
+app.use("/upgrades", upgradesRoute)
 
 // Account route
-app.use("/account", require("./routes/accountRoute"))
+app.use("/account", require("accountRoute"))
 
 // File Not Found Route - must be last route in list
 app.use(async (req, res, next) => {
