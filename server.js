@@ -16,6 +16,7 @@ const static = require("./routes/static")
 const baseController = require("./controllers/baseController")
 const inventoryRoute = require("./routes/inventoryRoute")
 const upgradesRoute = require("./routes/upgradesRoute")
+const accountRoute = require("./routes/accountRoute")
 const utilities = require("./utilities")
 
 
@@ -64,6 +65,9 @@ app.use("/inv", inventoryRoute)
 
 // Upgrades route
 app.use("/upgrades", upgradesRoute)
+
+// Account route
+app.use("/account", accountRoute)
 
 // File Not Found Route - must be last route in list
 app.use(async (req, res, next) => {
