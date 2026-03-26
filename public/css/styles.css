@@ -48,6 +48,22 @@ body {
     letter-spacing: 0.05em;
 }
 
+/* Skip to content link for accessibility */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #1b386e;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    z-index: 100;
+    text-decoration: none;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
 /* Navigation */
 .navbar {
     background-color: #1b386e;
@@ -277,7 +293,7 @@ footer .copyright {
     background-color: #fff3cd;
     border: 1px solid #ffeeba;
     border-radius: 8px;
-    color: #856404;
+    color: #664d03;
     list-style: none;
 }
 
@@ -286,7 +302,7 @@ footer .copyright {
     background-color: #f8d7da;
     border: 1px solid #f5c6cb;
     border-radius: 8px;
-    color: #721c24;
+    color: #58151c;
     list-style: none;
 }
 
