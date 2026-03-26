@@ -27,4 +27,19 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('You clicked on ' + car.querySelector('h2').textContent);
         });
     });
+
+    // Show/hide password toggle
+    const showPasswordBtn = document.getElementById("showPassword");
+    if (showPasswordBtn) {
+        showPasswordBtn.addEventListener("click", function () {
+            const passwordInput = document.getElementById("account_password");
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                showPasswordBtn.textContent = "Hide Password";
+            } else {
+                passwordInput.type = "password";
+                showPasswordBtn.textContent = "Show Password";
+            }
+        });
+    }
 });
