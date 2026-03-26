@@ -70,9 +70,17 @@ Util.buildClassificationGrid = async function (data) {
 * Build the inventory detail view HTML
 * ************************************ */
 Util.buildVehicleDetail = function (vehicle) {
+    let imagePath = "/images/vehicles/no-image.png"
+    if (vehicle.inv_image) {
+        const rawImage = vehicle.inv_image.trim().replace(/\\/g, "/")
+        const imageFile = rawImage.split("/").pop()
+        if (imageFile) {
+            imagePath = "/images/vehicles/" + imageFile
+        }
+    }
     let detail = '<div class="vehicle-detail">'
     detail += '<div class="detail-image">'
-    detail += '<img src="' + vehicle.inv_image
+    detail += '<img src="' + imagePath
         + '" alt="' + vehicle.inv_make + ' ' + vehicle.inv_model + '">'
     detail += '</div>'
     detail += '<div class="detail-info">'
