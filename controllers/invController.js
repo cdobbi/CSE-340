@@ -43,9 +43,11 @@ invCont.buildDetail = async function (req, res, next) {
  * ************************** */
 invCont.buildManagement = async function (req, res, next) {
     let nav = await utilities.getNav()
+    let classificationList = await utilities.buildClassificationList()
     res.render("./inventory/management", {
         title: "Vehicle Management",
         nav,
+        classificationList,
         errors: null,
     })
 }
