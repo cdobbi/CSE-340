@@ -5,7 +5,7 @@
 /* ***********************
  * Require Statements
  *************************/
-
+const cookieParser = require("cookie-parser")
 const express = require("express")
 const expressLayouts = require("express-ejs-layouts")
 const env = require("dotenv").config()
@@ -39,12 +39,13 @@ app.use(session({
 // Express Messages Middleware
 app.use(require('connect-flash')())
 app.use(function (req, res, next) {
-    res.locals.messages = require('express-messages') (req, res)
-        next()
+    res.locals.messages = require('express-messages')(req, res)
+    next()
 })
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
+app.use(cookieParser())
 
 /* ***********************
  * View Engine and Templates
