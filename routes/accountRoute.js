@@ -6,6 +6,9 @@ const utilities = require("../utilities")
 const accountController = require("../controllers/accountController")
 
 
+// Default account management view
+router.get("/", utilities.handleErrors(accountController.buildAccountManagement))
+
 router.get("/login", utilities.handleErrors(accountController.buildLogin))
 router.get("/register", utilities.handleErrors(accountController.buildRegister))
 // Process the registration data
