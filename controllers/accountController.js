@@ -159,12 +159,25 @@ async function updateAccount(account_id, account_firstname, account_lastname, ac
     }
 }
 
-async function updatePassword(account_id, account_password) {
-    try {
-        const sql = "UPDATE account SET account_password = $1 WHERE account_id = $2 RETURNING *"
-        return await pool.query(sql, [account_password, account_id])
-    } catch (error) {
-        return error.message
+async function updatePassword(req, res) {
+    let nav = await utilities.getNav()
+    const { account_password } = req.body
+    const account_id = res.locals.accountData.account_id
+
+    const hashedPassword = await bcrypt.hash(account_password, 10)
+    const updateResult = await accountModel.updatePassword(account_id, hashedPassword)
+
+    if (updateResult) {
+        req.flash("notice", "Password updated successfully.")
+        res.redirect("/account/")
+    } else {
+        req.flash("notice", "Sorry, the password update failed.")
+        res.status(501).render("account/index", {
+            title: "Account Management",
+            nav,
+            errors: null,
+            accountData: res.locals.accountData,
+        })
     }
 }
 
@@ -223,4 +236,4 @@ validate.checkUpdateData = async (req, res, next) => {
     next()
 }
 
-module.exports = { buildLogin, buildRegister, registerAccount, accountLogin, buildAccountManagement, accountLogout, getAccountById, updateAccount, updatePassword, validate }
+module.exports = { buildLogin, buildRegister, registerAccount, accountLogin, buildAccountManagement, accountLogout, updateAccount, updatePassword }
