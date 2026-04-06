@@ -127,6 +127,7 @@ async function buildAccountManagement(req, res, next) {
         title: "Account Management",
         nav,
         errors: null,
+        accountData: res.locals.accountData,
     })
 }
 
@@ -139,26 +140,42 @@ async function accountLogout(req, res, next) {
     return res.redirect("/")
 }
 
-async function getAccountById(account_id) {
-    try {
-        const result = await pool.query(
-            'SELECT account_id, account_firstname, account_lastname, account_email, account_type, account_password FROM account WHERE account_id = $1',
-            [account_id])
-        return result.rows[0]
-    } catch (error) {
-        return new Error("No matching account found")
+/* ****************************************
+ *  Process account update
+ * ************************************ */
+async function updateAccount(req, res) {
+    let nav = await utilities.getNav()
+    const { account_firstname, account_lastname, account_email } = req.body
+    const account_id = res.locals.accountData.account_id
+
+    const updateResult = await accountModel.updateAccount(account_id, account_firstname, account_lastname, account_email)
+
+    if (updateResult) {
+        // Re-sign the JWT with updated account data
+        const accountData = await accountModel.getAccountById(account_id)
+        delete accountData.account_password
+        const accessToken = jwt.sign(accountData, process.env.ACCESS_TOKEN_SECRET, { expiresIn: 3600 * 1000 })
+        if (process.env.NODE_ENV === 'development') {
+            res.cookie("jwt", accessToken, { httpOnly: true, maxAge: 3600 * 1000 })
+        } else {
+            res.cookie("jwt", accessToken, { httpOnly: true, secure: true, maxAge: 3600 * 1000 })
+        }
+        req.flash("notice", "Account updated successfully.")
+        res.redirect("/account/")
+    } else {
+        req.flash("notice", "Sorry, the update failed.")
+        res.status(501).render("account/index", {
+            title: "Account Management",
+            nav,
+            errors: null,
+            accountData: res.locals.accountData,
+        })
     }
 }
 
-async function updateAccount(account_id, account_firstname, account_lastname, account_email) {
-    try {
-        const sql = "UPDATE account SET account_firstname = $1, account_lastname = $2, account_email = $3 WHERE account_id = $4 RETURNING *"
-        return await pool.query(sql, [account_firstname, account_lastname, account_email, account_id])
-    } catch (error) {
-        return error.message
-    }
-}
-
+/* ****************************************
+ *  Process password update
+ * ************************************ */
 async function updatePassword(req, res) {
     let nav = await utilities.getNav()
     const { account_password } = req.body
@@ -179,61 +196,6 @@ async function updatePassword(req, res) {
             accountData: res.locals.accountData,
         })
     }
-}
-
-validate.updateAccountRules = () => {
-    return [
-        body("account_firstname")
-            .trim()
-            .escape()
-            .notEmpty()
-            .isLength({ min: 1 })
-            .withMessage("Please provide a first name."),
-
-        body("account_lastname")
-            .trim()
-            .escape()
-            .notEmpty()
-            .isLength({ min: 2 })
-            .withMessage("Please provide a last name."),
-
-        body("account_email")
-            .trim()
-            .isEmail()
-            .normalizeEmail()
-            .withMessage("A valid email is required."),
-    ]
-}
-
-validate.updatePasswordRules = () => {
-    return [
-        body("account_password")
-            .trim()
-            .notEmpty()
-            .isStrongPassword({
-                minLength: 12,
-                minLowercase: 1,
-                minUppercase: 1,
-                minNumbers: 1,
-                minSymbols: 1,
-            })
-            .withMessage("Password does not meet requirements."),
-    ]
-}
-
-validate.checkUpdateData = async (req, res, next) => {
-    let errors = validationResult(req)
-    if (!errors.isEmpty()) {
-        let nav = await utilities.getNav()
-        res.render("account/index", {
-            errors,
-            title: "Account Management",
-            nav,
-            accountData: res.locals.accountData,
-        })
-        return
-    }
-    next()
 }
 
 module.exports = { buildLogin, buildRegister, registerAccount, accountLogin, buildAccountManagement, accountLogout, updateAccount, updatePassword }
