@@ -14,4 +14,34 @@
         </ul>
         <% } %>
 
-            <p>You're logged in</p>
+            <p>Welcome, <%= accountData.account_firstname %>! You are logged in as a <%= accountData.account_type %>.</p>
+
+            <% if (accountData.account_type !=='Client' ) { %>
+                <h2>Account Management Tools</h2>
+                <% } %>
+
+                    <h3>Update Account Information</h3>
+                    <form method="post" action="/account/update-account">
+                        <label for="account_firstname">First Name:</label>
+                        <input type="text" id="account_firstname" name="account_firstname" value="<%= accountData.account_firstname %>"
+                            required minlength="1">
+
+                        <label for="account_lastname">Last Name:</label>
+                        <input type="text" id="account_lastname" name="account_lastname" value="<%= accountData.account_lastname %>"
+                            required minlength="2">
+
+                        <label for="account_email">Email:</label>
+                        <input type="email" id="account_email" name="account_email" value="<%= accountData.account_email %>" required>
+
+                        <button type="submit">Update Account</button>
+                    </form>
+
+                    <h3>Change Password</h3>
+                    <form method="post" action="/account/update-password">
+                        <label for="account_password">New Password:</label>
+                        <input type="password" id="account_password" name="account_password" required
+                            pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{12,}$"
+                            title="Must be 12+ characters with at least 1 uppercase, 1 lowercase, 1 number, and 1 special character">
+
+                        <button type="submit">Change Password</button>
+                    </form>
