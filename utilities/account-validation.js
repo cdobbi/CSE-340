@@ -168,15 +168,15 @@ validate.updatePasswordRules = () => {
 }
 
 /* ******************************
- * Check update data and return errors to account management view
+ * Check account update data and return errors to update view
  * ***************************** */
 validate.checkUpdateData = async (req, res, next) => {
     let errors = validationResult(req)
     if (!errors.isEmpty()) {
         let nav = await utilities.getNav()
-        res.render("account/index", {
+        res.render("account/update", {
             errors,
-            title: "Account Management",
+            title: "Update Account",
             nav,
             accountData: res.locals.accountData,
         })

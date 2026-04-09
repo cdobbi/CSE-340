@@ -25,6 +25,9 @@ router.post(
     utilities.handleErrors(accountController.accountLogin)
 )
 
+// Deliver account update view
+router.get("/update/:account_id", utilities.checkLogin, utilities.handleErrors(accountController.buildAccountUpdate))
+
 // Process account update
 router.post(
     "/update-account",
