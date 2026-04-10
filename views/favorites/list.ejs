@@ -6,9 +6,9 @@
 
     <% if (favorites.length> 0) { %>
         <ul id="favorites-list">
-            <% favorites.forEach(function(fav) { let thumbnailPath="/images/vehicles/no-image-tn.png" if (fav.inv_thumbnail) { const
-                rawThumbnail=fav.inv_thumbnail.trim().replace(/\\/g, "/" ) const thumbnailFile=rawThumbnail.split("/").pop() if
-                (thumbnailFile) { thumbnailPath="/images/vehicles/" + thumbnailFile } } %>
+            <% favorites.forEach(function(fav) { let thumbnailPath="/images/vehicles/no-image-tn.png" ; if (fav.inv_thumbnail) { const
+                rawThumbnail=fav.inv_thumbnail.trim().replace(/\\/g, "/" ); const thumbnailFile=rawThumbnail.split("/").pop(); if
+                (thumbnailFile) { thumbnailPath="/images/vehicles/" + thumbnailFile; } } %>
                 <li class="favorite-item">
                     <a href="/inv/detail/<%= fav.inv_id %>">
                         <img src="<%= thumbnailPath %>" alt="<%= fav.inv_make %> <%= fav.inv_model %>">
