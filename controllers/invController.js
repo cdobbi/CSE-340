@@ -1,4 +1,5 @@
 const invModel = require("../models/inventory-model")
+const favoritesModel = require("../models/favorites-model")
 const utilities = require("../utilities")
 
 const invCont = {}
@@ -28,10 +29,19 @@ invCont.buildDetail = async function (req, res, next) {
     let nav = await utilities.getNav()
     if (data.length > 0) {
         const detail = utilities.buildVehicleDetail(data[0])
+        // Check if this vehicle is favorited by the logged-in user
+        let isFavorited = false
+        if (res.locals.loggedin) {
+            isFavorited = await favoritesModel.checkExistingFavorite(
+                res.locals.accountData.account_id, inv_id
+            )
+        }
         res.render("./inventory/detail", {
             title: data[0].inv_make + " " + data[0].inv_model,
             nav,
             detail,
+            inv_id,
+            isFavorited,
         })
     } else {
         res.status(404).render("error", { message: "vehicle not found", nav })

@@ -1,1 +1,20 @@
-<%- detail %>
+<%- messages() %>
+    <%- detail %>
+
+        <% if (locals.loggedin) { %>
+            <div class="favorite-action">
+                <% if (isFavorited) { %>
+                    <form action="/favorites/remove" method="post">
+                        <input type="hidden" name="inv_id" value="<%= inv_id %>">
+                        <button type="submit" class="btn-favorite favorited">&#9829; Remove from Favorites</button>
+                    </form>
+                    <% } else { %>
+                        <form action="/favorites/add" method="post">
+                            <input type="hidden" name="inv_id" value="<%= inv_id %>">
+                            <button type="submit" class="btn-favorite">&#9825; Add to Favorites</button>
+                        </form>
+                        <% } %>
+            </div>
+            <% } else { %>
+                <p class="favorite-login"><a href="/account/login">Log in</a> to add this vehicle to your favorites.</p>
+                <% } %>

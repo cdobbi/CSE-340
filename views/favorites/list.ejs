@@ -1,0 +1,36 @@
+<h1>
+    <%= title %>
+</h1>
+
+<%- messages() %>
+
+    <% if (favorites.length> 0) { %>
+        <ul id="favorites-list">
+            <% favorites.forEach(function(fav) { let thumbnailPath="/images/vehicles/no-image-tn.png" if (fav.inv_thumbnail) { const
+                rawThumbnail=fav.inv_thumbnail.trim().replace(/\\/g, "/" ) const thumbnailFile=rawThumbnail.split("/").pop() if
+                (thumbnailFile) { thumbnailPath="/images/vehicles/" + thumbnailFile } } %>
+                <li class="favorite-item">
+                    <a href="/inv/detail/<%= fav.inv_id %>">
+                        <img src="<%= thumbnailPath %>" alt="<%= fav.inv_make %> <%= fav.inv_model %>">
+                    </a>
+                    <div class="favorite-info">
+                        <h2><a href="/inv/detail/<%= fav.inv_id %>">
+                                <%= fav.inv_year %>
+                                    <%= fav.inv_make %>
+                                        <%= fav.inv_model %>
+                            </a></h2>
+                        <p class="detail-price">$<%= new Intl.NumberFormat('en-US').format(fav.inv_price) %>
+                        </p>
+                        <p class="favorite-date">Added: <%= new Date(fav.date_added).toLocaleDateString() %>
+                        </p>
+                        <form action="/favorites/remove" method="post" class="remove-form">
+                            <input type="hidden" name="inv_id" value="<%= fav.inv_id %>">
+                            <button type="submit" class="btn-remove">&#9829; Remove</button>
+                        </form>
+                    </div>
+                </li>
+                <% }) %>
+        </ul>
+        <% } else { %>
+            <p class="notice">You haven't added any favorites yet. <a href="/">Browse vehicles</a> to find ones you like!</p>
+            <% } %>

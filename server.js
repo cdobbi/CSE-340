@@ -17,6 +17,7 @@ const baseController = require("./controllers/baseController")
 const inventoryRoute = require("./routes/inventoryRoute")
 const upgradesRoute = require("./routes/upgradesRoute")
 const accountRoute = require("./routes/accountRoute")
+const favoritesRoute = require("./routes/favoritesRoute")
 const utilities = require("./utilities")
 const bodyParser = require("body-parser")
 
@@ -69,6 +70,10 @@ app.use("/upgrades", upgradesRoute)
 
 // Account route
 app.use("/account", accountRoute)
+
+// Favorites route
+app.use("/favorites", favoritesRoute)
+
 // File Not Found Route - must be last route in list
 app.use(async (req, res, next) => {
     next({ status: 404, message: 'Sorry, we appear to have lost that page.' })
