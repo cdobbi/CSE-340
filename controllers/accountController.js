@@ -96,7 +96,7 @@ async function accountLogin(req, res) {
     try {
         if (await bcrypt.compare(account_password, accountData.account_password)) {
             delete accountData.account_password
-            const accessToken = jwt.sign(accountData, process.env.ACCESS_TOKEN_SECRET, { expiresIn: 3600 * 1000 })
+            const accessToken = jwt.sign(accountData, process.env.ACCESS_TOKEN_SECRET, { expiresIn: 3600 })
             if (process.env.NODE_ENV === 'development') {
                 res.cookie("jwt", accessToken, { httpOnly: true, maxAge: 3600 * 1000 })
             } else {
@@ -105,7 +105,7 @@ async function accountLogin(req, res) {
             return res.redirect("/account/")
         }
         else {
-            req.flash("message notice", "Please check your credentials and try again.")
+            req.flash("notice", "Please check your credentials and try again.")
             res.status(400).render("account/login", {
                 title: "Login",
                 nav,
@@ -168,7 +168,7 @@ async function updateAccount(req, res) {
         // Re-sign the JWT with updated account data
         const accountData = await accountModel.getAccountById(account_id)
         delete accountData.account_password
-        const accessToken = jwt.sign(accountData, process.env.ACCESS_TOKEN_SECRET, { expiresIn: 3600 * 1000 })
+        const accessToken = jwt.sign(accountData, process.env.ACCESS_TOKEN_SECRET, { expiresIn: 3600 })
         if (process.env.NODE_ENV === 'development') {
             res.cookie("jwt", accessToken, { httpOnly: true, maxAge: 3600 * 1000 })
         } else {
